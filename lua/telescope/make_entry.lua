@@ -642,8 +642,9 @@ function make_entry.gen_from_buffer(opts)
     local indicator = entry.flag .. hidden .. readonly .. changed
     local lnum = 1
     local col = 1
-    if vim.fn.bufwinnr(entry.bufnr) ~= -1 then
-        col = vim.api.nvim_win_get_cursor(vim.fn.bufwinnr(entry.bufnr))[2] + 1
+    local winnr = tonumber(vim.fn.bufwinnr(entry.bufnr))
+    if winnr ~= -1 then
+        col = vim.api.nvim_win_get_cursor(winnr)[2] + 1
     end
     print('make_entry - col:' .. col)
 
