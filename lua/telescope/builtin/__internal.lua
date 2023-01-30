@@ -898,10 +898,17 @@ internal.buffers = function(opts)
       default_selection_idx = 2
     end
 
+    local col = 1
+    local winid = vim.fn.bufwinid(bufnr)
+    if winid ~= -1 then
+        col = vim.api.nvim_win_get_cursor(winid)[2] + 1
+    end
+
     local element = {
       bufnr = bufnr,
       flag = flag,
       info = vim.fn.getbufinfo(bufnr)[1],
+      col = col,
     }
 
     if opts.sort_lastused and (flag == "#" or flag == "%") then
