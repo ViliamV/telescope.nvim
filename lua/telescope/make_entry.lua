@@ -643,6 +643,7 @@ function make_entry.gen_from_buffer(opts)
     local lnum = 1
     local col = vim.api.nvim_win_get_cursor(opts.winnr)[2]
     print('make_entry - col:' .. col)
+    print(vim.inspect(vim.api.nvim__buf_stats(entry.bufnr))
 
     -- account for potentially stale lnum as getbufinfo might not be updated or from resuming buffers picker
     if entry.info.lnum ~= 0 then
