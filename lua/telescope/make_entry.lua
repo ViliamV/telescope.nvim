@@ -632,6 +632,8 @@ function make_entry.gen_from_buffer(opts)
   end
 
   return function(entry)
+    print('make_entry')
+    print(vim.inspect(entry))
     local bufname = entry.info.name ~= "" and entry.info.name or "[No Name]"
     -- if bufname is inside the cwd, trim that part of the string
     bufname = Path:new(bufname):normalize(cwd)
