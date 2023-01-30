@@ -632,8 +632,6 @@ function make_entry.gen_from_buffer(opts)
   end
 
   return function(entry)
-    print('make_entry')
-    print(vim.inspect(entry))
     local bufname = entry.info.name ~= "" and entry.info.name or "[No Name]"
     -- if bufname is inside the cwd, trim that part of the string
     bufname = Path:new(bufname):normalize(cwd)
@@ -644,6 +642,7 @@ function make_entry.gen_from_buffer(opts)
     local indicator = entry.flag .. hidden .. readonly .. changed
     local lnum = 1
     local col = vim.api.nvim_win_get_cursor(opts.winnr)[2]
+    print('make_entry - col:' .. col)
 
     -- account for potentially stale lnum as getbufinfo might not be updated or from resuming buffers picker
     if entry.info.lnum ~= 0 then
