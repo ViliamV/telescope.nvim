@@ -927,20 +927,20 @@ internal.buffers = function(opts)
       previewer = conf.grep_previewer(opts),
       sorter = conf.generic_sorter(opts),
       default_selection_index = default_selection_idx,
-      attach_mappings = function(prompt_bufnr)
-        actions.select_default:replace(function()
-          local selection = action_state.get_selected_entry()
-          if selection == nil then
-            utils.__warn_no_selection "builtin.buffers"
-            return
-          end
-
-          actions.close(prompt_bufnr)
-          print(vim.inspect(selection))
-        end)
-
-        return true
-      end,
+      -- attach_mappings = function(prompt_bufnr)
+      --   actions.select_default:replace(function()
+      --     local selection = action_state.get_selected_entry()
+      --     if selection == nil then
+      --       utils.__warn_no_selection "builtin.buffers"
+      --       return
+      --     end
+      --
+      --     actions.close(prompt_bufnr)
+      --     print(vim.inspect(selection))
+      --   end)
+      --
+      --   return true
+      -- end,
     })
     :find()
 end
