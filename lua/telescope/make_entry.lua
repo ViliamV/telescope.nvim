@@ -646,7 +646,7 @@ function make_entry.gen_from_buffer(opts)
     if winid ~= -1 then
         col = vim.api.nvim_win_get_cursor(winid)[2] + 1
     end
-    print('make_entry - col:' .. col)
+    print('make_entry - filename:' .. entry.filename .. ' col:' .. col)
 
     -- account for potentially stale lnum as getbufinfo might not be updated or from resuming buffers picker
     if entry.info.lnum ~= 0 then
